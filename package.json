@@ -23,6 +23,7 @@
   "devDependencies": {
     "always-thunk": "^1.0.0",
     "assertit": "^0.1.0",
+    "bluebird": "^2.9.32",
     "co": "^4.5.4",
     "graceful-fs": "^4.1.2",
     "hybridify": "^1.0.9",
