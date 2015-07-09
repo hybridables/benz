@@ -1,7 +1,7 @@
 {
   "name": "benz",
-  "version": "0.1.2",
-  "description": "Compose your control flow with absolute elegance. Support async/await, callbacks, thunks, generators, promises, observables, child processes and streams. Can power applications that need to have middlewares. Useful for creating task, test and bench runners. Built with backward compatibility and future stability in mind.",
+  "version": "0.1.3",
+  "description": "Compose your control flow with absolute elegance. Support async/await, callbacks, thunks, generators, promises, observables, child processes and streams. Can power applications that need to have plugins. Useful for creating task, test and bench runners.",
   "repository": "tunnckoCore/benz",
   "author": "Charlike Mike Reagent <@tunnckoCore> (http://www.tunnckocore.tk)",
   "main": "index.js",
