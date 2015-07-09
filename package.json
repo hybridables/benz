@@ -1,0 +1,32 @@
+{
+  "name": "benz",
+  "version": "0.0.0",
+  "description": "Compose your control flow with absolute elegance. Support async/await, callbacks, thunks, generators, promises. Useful for creating task, test and bench runners. Can power applications that need to have middlewares or plugins. Built with backward compatibility and future stability in mind - works from Node.js 0.10 to every IOjs release.",
+  "repository": "tunnckoCore/benz",
+  "author": "Charlike Mike Reagent <@tunnckoCore> (http://www.tunnckocore.tk)",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "standard && node test.js"
+  },
+  "dependencies": {
+    "async-done": "~1.0.0",
+    "extend-shallow": "^2.0.0",
+    "handle-arguments": "~3.0.2",
+    "is-es6-generator-function": "~1.0.0",
+    "is-promise": "~2.0.0",
+    "kind-of": "~2.0.0",
+    "manage-arguments": "~1.0.0",
+    "now-and-later": "~0.0.6",
+    "option-cache": "~1.5.0"
+  },
+  "devDependencies": {
+    "always-thunk": "^1.0.0",
+    "assertit": "^0.1.0",
+    "co": "^4.5.4",
+    "graceful-fs": "^4.1.2",
+    "hybridify": "^1.0.9",
+    "mz": "^2.0.0"
+  },
+  "keywords": []
+}
