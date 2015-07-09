@@ -1,6 +1,6 @@
 # benz [![npmjs.com][npmjs-img]][npmjs-url] [![The MIT License][license-img]][license-url] 
 
-> Compose your control flow with absolute elegance. Support async/await, callbacks, thunks, generators, promises. Useful for creating task, test and bench runners. Can power applications that need to have middlewares or plugins. Built with backward compatibility and future stability in mind - works from Node.js 0.10 to every IOjs release.
+> Compose your control flow with absolute elegance. Support async/await, callbacks, thunks, generators, promises, streams. Useful for creating task, test and bench runners. Can power applications that need to have middlewares or plugins. Built with backward compatibility and future stability in mind - works from Node.js 0.10 to every IOjs release.
 
 [![code climate][codeclimate-img]][codeclimate-url] [![standard code style][standard-img]][standard-url] [![travis build status][travis-img]][travis-url] [![coverage status][coveralls-img]][coveralls-url] [![dependency status][david-img]][david-url]
 
