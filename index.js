@@ -43,6 +43,9 @@ Benz.prototype._defaultOptions = function () {
   if (!this.hasOption('promise') || !this.isBoolean('promise')) {
     this.option('promise', false)
   }
+  if (!this.hasOption('parallel') || !this.isBoolean('parallel')) {
+    this.option('parallel', false)
+  }
   if (!this.hasOption('flatten') || !this.isBoolean('flatten')) {
     this.option('flatten', true)
   }
@@ -66,3 +69,10 @@ Benz.prototype._defaultOptions = function () {
 
 Benz.prototype.series = factory('mapSeries')
 Benz.prototype.parallel = factory('map')
+
+Benz.prototype.run = function run (fns, extensions) {
+  if (this.enabled('parallel')) {
+    return this.parallel(fns, extensions)
+  }
+  return this.series(fns, extensions)
+}
