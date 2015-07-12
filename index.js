@@ -5,6 +5,8 @@
  * Released under the MIT license.
  */
 
+/* jshint asi:true, esnext:true */
+
 'use strict'
 
 var util = require('util')
