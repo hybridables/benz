@@ -10,7 +10,7 @@
     "test": "standard && node test.js"
   },
   "dependencies": {
-    "async-done": "~1.0.0",
+    "async-done": "~1.1.0",
     "extend-shallow": "~2.0.0",
     "handle-arguments": "~3.0.2",
     "is-es6-generator-function": "~1.0.0",
