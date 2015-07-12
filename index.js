@@ -12,6 +12,7 @@
 var util = require('util')
 var kindOf = require('kind-of')
 var Options = require('option-cache')
+var isObject = require('is-extendable')
 var factory = require('./lib/factory')
 
 /**
@@ -39,7 +40,7 @@ function Benz (options) {
 util.inherits(Benz, Options)
 
 Benz.prototype._defaultOptions = function () {
-  if (!this.hasOption('context')) {
+  if (!this.hasOption('context') || !isObject(this.option('context'))) {
     this.option('context', {})
   }
   if (!this.hasOption('promise') || !this.isBoolean('promise')) {

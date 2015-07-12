@@ -14,6 +14,7 @@
     "extend-shallow": "~2.0.0",
     "handle-arguments": "~3.0.2",
     "is-es6-generator-function": "~1.0.0",
+    "is-extendable": "~0.1.1",
     "is-promise": "~2.0.0",
     "kind-of": "~2.0.0",
     "manage-arguments": "~1.0.0",
