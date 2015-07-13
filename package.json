@@ -19,7 +19,7 @@
     "kind-of": "~2.0.0",
     "manage-arguments": "~1.0.0",
     "now-and-later": "~0.0.6",
-    "option-cache": "~1.5.0"
+    "option-cache": "~2.0.0"
   },
   "devDependencies": {
     "always-thunk": "^1.0.0",
