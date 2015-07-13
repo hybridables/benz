@@ -164,4 +164,39 @@ test('.series()', function () {
       done()
     })
   })
+  test('should just run next middleware', function (done) {
+    var db = []
+    benz().series([
+      function (next) {
+        this.first = 123
+        db.push(this.first)
+        next()
+      },
+      function (next) {
+        this.second = 456
+        db.push(this.second)
+        next()
+      }
+    ])(function (err, res) {
+      test.ifError(err)
+      test.deepEqual(res, [])
+      test.deepEqual(db, [123, 456])
+      test.deepEqual(this, {first: 123, second: 456})
+      done()
+    })
+  })
+  test('should pass multiple params to next middleware', function (done) {
+    benz().series([
+      function (next) {
+        next(null, 1, 2, 3)
+      },
+      function (one, two, three, next) {
+        next(null, three + 60)
+      }
+    ])(function (err, res) {
+      test.ifError(err)
+      test.deepEqual(res, [[1, 2, 3], 63])
+      done()
+    })
+  })
 })
