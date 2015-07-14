@@ -13,7 +13,7 @@ var util = require('util')
 var kindOf = require('kind-of')
 var Options = require('option-cache')
 var isObject = require('is-extendable')
-var factory = require('./lib/factory')
+var compose = require('./lib/compose')
 
 /**
  * Expose `Benz`
@@ -41,7 +41,7 @@ util.inherits(Benz, Options)
 
 Benz.prototype._defaultOptions = function () {
   if (!this.hasOption('context') || !isObject(this.option('context'))) {
-    this.option('context', {})
+    this.option('context', null)
   }
   if (!this.hasOption('promise') || !this.isBoolean('promise')) {
     this.option('promise', false)
@@ -59,7 +59,7 @@ Benz.prototype._defaultOptions = function () {
     this.option('done', function noop () {})
   }
   if (!this.hasOption('extensions') || kindOf(this.option('extensions')) !== 'object') {
-    this.option('extensions', false)
+    this.option('extensions', null)
   }
   if (!this.hasOption('promisify') || kindOf(this.option('promisify')) !== 'function') {
     this.option('promisify', require('hybridify'))
@@ -70,8 +70,8 @@ Benz.prototype._defaultOptions = function () {
   return this
 }
 
-Benz.prototype.series = factory('mapSeries')
-Benz.prototype.parallel = factory('map')
+Benz.prototype.series = compose('series')
+Benz.prototype.parallel = compose('parallel')
 
 Benz.prototype.run = function run (fns, extensions) {
   if (this.enabled('parallel')) {

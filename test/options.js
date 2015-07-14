@@ -19,8 +19,8 @@ test('options', function () {
     test.equal(opts.promise, false)
     test.equal(opts.flatten, true)
     test.equal(opts.onlylast, false)
-    test.equal(opts.extensions, false)
-    test.deepEqual(opts.context, {})
+    test.equal(opts.extensions, null)
+    test.equal(opts.context, null)
     done()
   })
   test('should accept options from constructor', function (done) {
