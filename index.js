@@ -13,7 +13,7 @@ var util = require('util')
 var kindOf = require('kind-of')
 var Options = require('option-cache')
 var isObject = require('is-extendable')
-var compose = require('./lib/compose')
+var factory = require('./lib/factory')
 
 /**
  * Expose `Benz`
@@ -70,9 +70,16 @@ Benz.prototype._defaultOptions = function () {
   return this
 }
 
-Benz.prototype.series = compose('series')
-Benz.prototype.parallel = compose('parallel')
+Benz.prototype.compose = function compose (method) {
+  return factory(this, method)
+}
 
+Benz.prototype.series = function (fns, extensions) {
+  return this.compose('series')(fns, extensions)
+}
+Benz.prototype.parallel = function (fns, extensions) {
+  return this.compose('parallel')(fns, extensions)
+}
 Benz.prototype.run = function run (fns, extensions) {
   if (this.enabled('parallel')) {
     return this.parallel(fns, extensions)
