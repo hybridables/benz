@@ -20,6 +20,156 @@ var benz = require('benz')
 ```
 
 
+## API
+### [Benz](./index.js#L38)
+> Create a new instance of `Benz`.
+
+- `[options]` **{Object}** Initialize with default options.    
+
+**Example**
+
+```js
+var Benz = require('benz')
+var benz = new Benz()
+```
+
+### [.compose](./index.js#L121)
+> Used internally to create `.parallel` and `.series` methods.
+
+- `<method>` **{String}** all available [now-and-later][nal] methods or `series`, or `parallel`    
+- `returns` **{Function}** composed function  
+
+**Example**
+
+```js
+var fs = require('fs')
+var benz = require('benz')
+var series = benz().compose('series')
+
+var done = series([
+  function (fp, encoding, next) {
+    fs.readFile(fp, encoding, next)
+  },
+  function (content, next) {
+    var name = JSON.parse(content).name
+    next(null, name)
+  }
+])
+
+done('./package.json', 'utf8', function (err, res) {
+  console.log(err) //=> null
+  console.log(res)
+  //=> ['{\n  "name": "benz",\n  "version": "0.4.0" ...', 'benz']
+})
+```
+
+### [.series](./index.js#L172)
+> Run `fns` (plugins stack) in series.
+
+- `<fns>` **{Function|Array|Object}** plugins stack    
+- `[extensions]` **{Object}** passed to [now-and-later][nal]    
+- `returns` **{Function}** final done callback  
+
+**Example**
+
+```js
+var done = benz.series([
+  function one (initial, next) {
+    setTimeout(function () {
+      console.log('second')
+      next(null, initial + 555)
+    }, Math.random() * 50)
+  },
+  function two (initial, next) {
+    setTimeout(function () {
+      console.log('third')
+      next(null, initial + 333)
+    }, Math.random() * 200)
+  },
+  function three (initial, next) {
+    setTimeout(function () {
+      console.log('first')
+      next(null, initial + 111)
+    }, 0)
+  }
+])
+
+done(222, function (err, res) {
+  //=> 'second'
+  //=> 'third'
+  //=> 'first'
+
+  console.log(err, res)
+  //=> [777, 555, 111]
+})
+```
+
+### [.parallel](./index.js#L221)
+> Run `fns` (plugins stack) in paralell and maintain order of the results.
+
+- `<fns>` **{Function|Array|Object}** plugins stack    
+- `[extensions]` **{Object}** passed to [now-and-later][nal]    
+- `returns` **{Function}** final done callback  
+
+**Example**
+
+```js
+var done = benz.parallel([
+  function one (initial, next) {
+    setTimeout(function () {
+      console.log('second')
+      next(null, initial + 300)
+    }, Math.random() * 50)
+  },
+  function two (initial, next) {
+    setTimeout(function () {
+      console.log('third')
+      next(null, initial + 100)
+    }, Math.random() * 200)
+  },
+  function three (initial, next) {
+    setTimeout(function () {
+      console.log('first')
+      next(null, initial + 444)
+    }, 0)
+  }
+])
+
+done(100, function (err, res) {
+  //=> 'first'
+  //=> 'second'
+  //=> 'third'
+
+  console.log(err, res)
+  //=> [400, 200, 544]
+})
+```
+
+### [.run](./index.js#L253)
+> Alias of `.series` and `.parallel`. By default will run the stack in series,
+otherwise in parallel, but only if parallel option is enabled.
+
+- `<fns>` **{Function|Array|Object}** plugins stack    
+- `[extensions]` **{Object}** passed to [now-and-later][nal]    
+- `returns` **{Function}** final done callback  
+
+**Example**
+
+```js
+var fs = require('fs')
+var done = benz.enable('onlylast').run([
+  fs.readFile,
+  function (content, next) {
+    next(null, JSON.parse(content).name)
+  }
+])
+
+done('./package.json', 'utf8', function (err, res) {
+  console.log(err, res) //=> null 'benz'
+})
+```
+
+
 ## Contributing
 Pull requests and stars are always welcome. For bugs and feature requests, [please create an issue](https://github.com/tunnckoCore/benz/issues/new).  
 But before doing anything, please read the [CONTRIBUTING.md](./CONTRIBUTING.md) guidelines.
@@ -29,6 +179,8 @@ But before doing anything, please read the [CONTRIBUTING.md](./CONTRIBUTING.md) 
 
 [![tunnckocore.tk][author-www-img]][author-www-url] [![keybase tunnckocore][keybase-img]][keybase-url] [![tunnckoCore npm][author-npm-img]][author-npm-url] [![tunnckoCore twitter][author-twitter-img]][author-twitter-url] [![tunnckoCore github][author-github-img]][author-github-url]
 
+
+[nal]: https://travis-ci.org/phated/now-and-later
 
 [npmjs-url]: https://www.npmjs.com/package/benz
 [npmjs-img]: https://img.shields.io/npm/v/benz.svg?label=benz
