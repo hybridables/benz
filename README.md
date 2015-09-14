@@ -1,8 +1,29 @@
+
+<p align="center">
+  <img src="./benz.png">
+</p>
+
+<p align="center">
+  <a href="https://codeclimate.com/github/tunnckoCore/benz">
+    <img src="https://img.shields.io/codeclimate/github/tunnckoCore/benz.svg">
+  </a>
+  <a href="https://github.com/feross/standard">
+  <img src="https://img.shields.io/badge/code%20style-standard-brightgreen.svg">
+  </a>
+  <a href="https://travis-ci.org/tunnckoCore/benz">
+    <img src="https://img.shields.io/travis/tunnckoCore/benz.svg">
+  </a>
+  <a href="https://coveralls.io/r/tunnckoCore/benz">
+    <img src="https://img.shields.io/coveralls/tunnckoCore/benz.svg">
+  </a>
+  <a href="https://david-dm.org/tunnckoCore/benz">
+    <img src="https://img.shields.io/david/tunnckoCore/benz.svg">
+  </a>
+</p>
+
 # benz [![npmjs.com][npmjs-img]][npmjs-url] [![The MIT License][license-img]][license-url] 
 
 > Compose your control flow with absolute elegance. Support async/await, callbacks, thunks, generators, promises, observables, child processes and streams. Can power applications that need to have plugins. Useful for creating task, test and bench runners. Built with backward compatibility and future stability in mind.
-
-[![code climate][codeclimate-img]][codeclimate-url] [![standard code style][standard-img]][standard-url] [![travis build status][travis-img]][travis-url] [![coverage status][coveralls-img]][coveralls-url] [![dependency status][david-img]][david-url]
 
 
 ## Install
