@@ -10,24 +10,24 @@
     "test": "standard && node test.js"
   },
   "dependencies": {
-    "async-done": "~1.1.0",
+    "async-done": "~1.2.2",
     "extend-shallow": "~2.0.0",
-    "handle-arguments": "~3.0.2",
+    "handle-arguments": "~3.1.0",
     "is-es6-generator-function": "~1.0.0",
     "is-extendable": "~0.1.1",
-    "is-promise": "~2.0.0",
-    "kind-of": "~2.0.0",
+    "is-promise": "~2.1.0",
+    "kind-of": "~3.0.4",
     "manage-arguments": "~1.0.0",
-    "now-and-later": "~0.0.6",
-    "option-cache": "~2.0.0"
+    "now-and-later": "~1.0.0",
+    "option-cache": "~3.4.0"
   },
   "devDependencies": {
     "always-thunk": "^1.0.0",
     "assertit": "^0.1.0",
-    "bluebird": "^2.9.32",
+    "bluebird": "^3.4.6",
     "co": "^4.5.4",
     "graceful-fs": "^4.1.2",
-    "hybridify": "^1.0.9",
+    "hybridify": "^2.0.0",
     "mz": "^2.0.0"
   },
   "keywords": [
